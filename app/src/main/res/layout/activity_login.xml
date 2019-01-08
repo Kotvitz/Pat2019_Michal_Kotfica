@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+    </android.support.design.widget.AppBarLayout>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="@string/emailHint"
+        android:inputType="textEmailAddress"
+        android:importantForAutofill="no"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="180dp"
+        android:ems="10"
+        android:hint="@string/passwdHint"
+        android:inputType="textPassword"
+        android:importantForAutofill="no"
+        tools:targetApi="o" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginRight="120dp"
+        android:text="@string/log_in" />
+
+    <TextView
+        android:id="@+id/validateError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="150dp"
+        android:text="@string/not_valid_email"
+        android:textColor="#F00"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/validateError2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="230dp"
+        android:text="@string/passwd_conditions"
+        android:textColor="#F00"
+        android:visibility="invisible"/>
+
+</RelativeLayout>
