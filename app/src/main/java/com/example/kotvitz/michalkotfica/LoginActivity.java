@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,28 +21,14 @@ public class LoginActivity extends AppCompatActivity {
         final Intent mainScreen = new Intent(this, MainActivity.class);
         final EditText emailText = findViewById(R.id.editText);
         final EditText passwdText = findViewById(R.id.editText2);
-        final TextView emailFailed = findViewById(R.id.validateError);
-        final TextView passwdFailed = findViewById(R.id.validateError2);
         Button loginButton = findViewById(R.id.button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailText.getText().toString();
-                String passwd = passwdText.getText().toString();
-                String emailRegex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
-                String passwdRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
-                if (email.matches(emailRegex) && passwd.matches(passwdRegex)) {
+                boolean allIsValid = validate(emailText, passwdText);
+                if (allIsValid) {
+                    finish();
                     startActivity(mainScreen);
-                } else {
-                    if (!email.matches(emailRegex))
-                        emailFailed.setVisibility(View.VISIBLE);
-                    else
-                        emailFailed.setVisibility(View.GONE);
-
-                    if (!passwd.matches(passwdRegex))
-                        passwdFailed.setVisibility(View.VISIBLE);
-                    else
-                        passwdFailed.setVisibility(View.GONE);
                 }
             }
         });
@@ -70,5 +55,25 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
+    public boolean validate(EditText editText1, EditText editText2) {
+        String email = editText1.getText().toString();
+        String passwd = editText2.getText().toString();
+        final TextView emailFailed = findViewById(R.id.validateError);
+        final TextView passwdFailed = findViewById(R.id.validateError2);
+        boolean emailIsValid = email.matches("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$");
+        boolean passwdIsValid = passwd.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$");
+        if (emailIsValid && passwdIsValid) {
+            return true;
+        } else {
+            emailFailed.setVisibility(emailIsValid ? View.GONE : View.VISIBLE);
+            passwdFailed.setVisibility(passwdIsValid ? View.GONE : View.VISIBLE);
+            return false;
+        }
     }
 }
