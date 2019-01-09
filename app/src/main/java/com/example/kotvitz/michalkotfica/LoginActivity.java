@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -61,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public boolean validate(EditText editText1, EditText editText2) {
+    private boolean validate(EditText editText1, EditText editText2) {
         String email = editText1.getText().toString();
         String passwd = editText2.getText().toString();
         final TextView emailFailed = findViewById(R.id.validateError);
@@ -69,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         boolean emailIsValid = email.matches("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$");
         boolean passwdIsValid = passwd.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$");
         if (emailIsValid && passwdIsValid) {
+            Toast.makeText(getBaseContext(), "Logged in successfully", Toast.LENGTH_LONG).show();
             return true;
         } else {
             emailFailed.setVisibility(emailIsValid ? View.GONE : View.VISIBLE);

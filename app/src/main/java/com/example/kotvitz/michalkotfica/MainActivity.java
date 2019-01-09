@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void logOut() {
+    private void logOut() {
         final Intent loginScreen = new Intent(this, LoginActivity.class);
         final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this,
                 R.style.AppTheme);
