@@ -5,7 +5,6 @@
     <string name="emailHint">E-mail address</string>
     <string name="passwdHint">Password</string>
     <string name="log_in">Log in</string>
-    <string name="not_valid_email">The email address is not valid.</string>
-    <string name="passwd_conditions">The password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter and one number.</string>
     <string name="log_out">Log out</string>
+    <string name="hello_world">Hello World!</string>
 </resources>
