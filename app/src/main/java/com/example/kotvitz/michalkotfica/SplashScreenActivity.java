@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.Objects;
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     private final Handler handler = new Handler();
@@ -22,7 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (dataStorage.restoreEmail() == "" && dataStorage.restorePassword() == "") {
+                if (Objects.equals(dataStorage.restoreEmail(), "") && Objects.equals(dataStorage.restorePassword(), "")) {
                     finish();
                     startActivity(loginScreen);
                 } else {

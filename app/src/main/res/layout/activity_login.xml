@@ -47,10 +47,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="@dimen/loginBtn_marginStart"
-        android:layout_marginLeft="@dimen/loginBtn_marginLeft"
         android:layout_marginTop="@dimen/loginBtn_marginTop"
         android:layout_marginEnd="@dimen/loginBtn_marginEnd"
-        android:layout_marginRight="@dimen/loginBtn_marginRight"
         android:text="@string/log_in" />
 
 </RelativeLayout>

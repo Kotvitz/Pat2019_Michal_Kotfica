@@ -3,8 +3,8 @@ package com.example.kotvitz.michalkotfica;
 import android.content.SharedPreferences;
 import android.widget.EditText;
 
-public class LoginDataStorage {
-    private SharedPreferences preferences;
+class LoginDataStorage {
+    private final SharedPreferences preferences;
 
     public LoginDataStorage(SharedPreferences preferences) {
         this.preferences = preferences;

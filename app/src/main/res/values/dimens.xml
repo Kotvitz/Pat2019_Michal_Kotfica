@@ -6,10 +6,8 @@
     <dimen name="passwd_marginStart">0dp</dimen>
     <dimen name="passwd_marginTop">180dp</dimen>
     <dimen name="loginBtn_marginStart">120dp</dimen>
-    <dimen name="loginBtn_marginLeft">120dp</dimen>
     <dimen name="loginBtn_marginTop">300dp</dimen>
     <dimen name="loginBtn_marginEnd">120dp</dimen>
-    <dimen name="loginBtn_marginRight">120dp</dimen>
     <dimen name="land_loginBtn_marginTop">275dp</dimen>
     <dimen name="land_loginBtn_marginEnd">220dp</dimen>
     <dimen name="land_loginBtn_marginStart">220dp</dimen>

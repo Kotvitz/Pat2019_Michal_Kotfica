@@ -4,11 +4,11 @@ import android.content.Context;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Validation {
-    private String emailRegex;
-    private String passwdRegex;
-    private String emailError;
-    private String passwdError;
+class Validation {
+    private final String emailRegex;
+    private final String passwdRegex;
+    private final String emailError;
+    private final String passwdError;
 
     public Validation() {
         this.emailRegex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">michal.kotfica</string>
-    <string name="action_settings">Settings</string>
     <string name="todo">TODO</string>
     <string name="emailHint">E-mail address</string>
     <string name="passwdHint">Password</string>
