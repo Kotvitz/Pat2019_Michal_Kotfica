@@ -5,4 +5,8 @@
     <string name="passwdHint">Password</string>
     <string name="log_in">Log in</string>
     <string name="log_out">Log out</string>
+    <string name="emailError">The email address is not valid.</string>
+    <string name="passwdError">The password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter and one number.</string>
+    <string name="log_in_message">Logged in successfully</string>
+    <string name="log_out_message">You have been logged out.</string>
 </resources>

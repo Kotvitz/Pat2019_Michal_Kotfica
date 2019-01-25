@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,17 +20,23 @@ public class LoginActivity extends AppCompatActivity {
         final EditText emailText = findViewById(R.id.emailEditText);
         final EditText passwdText = findViewById(R.id.passwdEditText);
         Button loginButton = findViewById(R.id.loginButton);
-        final Validation validation = new Validation();
         final SharedPreferences preferences = getSharedPreferences("loginData", Activity.MODE_PRIVATE);
         final LoginDataStorage dataStorage = new LoginDataStorage(preferences);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean allIsValid = validation.validate(emailText, passwdText, getBaseContext());
-                if (allIsValid) {
-                    dataStorage.saveData(emailText, passwdText);
+                boolean emailIsValid = Validation.validateEmail(emailText.getText().toString());
+                boolean passwdIsValid = Validation.validatePassword(passwdText.getText().toString());
+                if (emailIsValid && passwdIsValid) {
+                    Toast.makeText(getBaseContext(), getString(R.string.log_in_message), Toast.LENGTH_LONG).show();
+                    dataStorage.saveData(emailText.getText().toString(), passwdText.getText().toString());
                     finish();
                     startActivity(mainScreen);
+                } else {
+                    if (!emailIsValid)
+                        emailText.setError(getString(R.string.emailError));
+                    if (!passwdIsValid)
+                        passwdText.setError(getString(R.string.passwdError));
                 }
             }
         });

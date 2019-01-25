@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         final Intent loginScreen = new Intent(this, LoginActivity.class);
         final SharedPreferences preferences = getSharedPreferences("loginData", Activity.MODE_PRIVATE);
         final LoginDataStorage dataStorage = new LoginDataStorage(preferences);
-        Toast.makeText(getBaseContext(), "You have been logged out.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), getString(R.string.log_out_message), Toast.LENGTH_LONG).show();
         dataStorage.removeData();
         finish();
         startActivity(loginScreen);

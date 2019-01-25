@@ -1,36 +1,14 @@
 package com.example.kotvitz.michalkotfica;
 
-import android.content.Context;
-import android.widget.EditText;
-import android.widget.Toast;
-
 class Validation {
-    private final String emailRegex;
-    private final String passwdRegex;
-    private final String emailError;
-    private final String passwdError;
+    private static final String emailRegex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
+    private static final String passwdRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
 
-    public Validation() {
-        this.emailRegex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
-        this.passwdRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
-        this.emailError = "The email address is not valid.";
-        this.passwdError = "The password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter and one number.";
+    public static boolean validateEmail(String email) {
+        return email.matches(emailRegex);
     }
 
-    public boolean validate(EditText emailText, EditText passwdText, Context context) {
-        String email = emailText.getText().toString();
-        String passwd = passwdText.getText().toString();
-        boolean emailIsValid = email.matches(emailRegex);
-        boolean passwdIsValid = passwd.matches(passwdRegex);
-        if (emailIsValid && passwdIsValid) {
-            Toast.makeText(context, "Logged in successfully", Toast.LENGTH_LONG).show();
-            return true;
-        } else {
-            if (!emailIsValid)
-                emailText.setError(emailError);
-            if (!passwdIsValid)
-                passwdText.setError(passwdError);
-            return false;
-        }
+    public static boolean validatePassword(String passwd) {
+        return passwd.matches(passwdRegex);
     }
 }
