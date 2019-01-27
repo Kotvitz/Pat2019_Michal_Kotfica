@@ -23,7 +23,7 @@ public class ElementsAdapter extends RecyclerView.Adapter<ElementsAdapter.ViewHo
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
         Context context = viewGroup.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View contactView = inflater.inflate(R.layout.content_main, viewGroup, false);
@@ -31,8 +31,8 @@ public class ElementsAdapter extends RecyclerView.Adapter<ElementsAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        ElementInfo element = elements.get(i);
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        ElementInfo element = elements.get(position);
         TextView titleTextView = viewHolder.elementTitle;
         titleTextView.setText(element.getTitle());
         TextView descTextView = viewHolder.elementDescription;

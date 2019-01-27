@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:padding="15dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/element_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/element_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        tools:ignore="UselessParent">
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/element_image"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/element_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:contentDescription="@string/app_name" />
+    <TextView
+        android:id="@+id/element_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toEndOf="@+id/element_image"
+        app:layout_constraintTop_toBottomOf="@+id/element_title"
+        tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/element_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@id/element_image"
-            android:layout_toRightOf="@id/element_image"
-            tools:ignore="RtlHardcoded" />
-
-        <TextView
-            android:id="@+id/element_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/element_title"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@id/element_image"
-            android:layout_toRightOf="@id/element_image"
-            tools:ignore="RtlHardcoded" />
-    </RelativeLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

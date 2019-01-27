@@ -9,4 +9,6 @@
     <string name="passwdError">The password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter and one number.</string>
     <string name="log_in_message">Logged in successfully</string>
     <string name="log_out_message">You have been logged out.</string>
+    <string name="volleyErrorLabel">Error:</string>
+    <string name="dialogLoading">Loading…</string>
 </resources>

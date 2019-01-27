@@ -12,37 +12,46 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private Intent mainScreen;
+    private EditText emailText;
+    private EditText passwdText;
+    private LoginDataStorage dataStorage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        final Intent mainScreen = new Intent(this, MainActivity.class);
-        final EditText emailText = findViewById(R.id.emailEditText);
-        final EditText passwdText = findViewById(R.id.passwdEditText);
+        mainScreen = new Intent(this, MainActivity.class);
+        emailText = findViewById(R.id.emailEditText);
+        passwdText = findViewById(R.id.passwdEditText);
         Button loginButton = findViewById(R.id.loginButton);
-        final SharedPreferences preferences = getSharedPreferences("loginData", Activity.MODE_PRIVATE);
-        final LoginDataStorage dataStorage = new LoginDataStorage(preferences);
+        SharedPreferences preferences = getSharedPreferences(AppConstant.LOGIN_PREFS, Activity.MODE_PRIVATE);
+        dataStorage = new LoginDataStorage(preferences);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean emailIsValid = Validation.validateEmail(emailText.getText().toString());
-                boolean passwdIsValid = Validation.validatePassword(passwdText.getText().toString());
-                if (emailIsValid && passwdIsValid) {
-                    Toast.makeText(getBaseContext(), getString(R.string.log_in_message), Toast.LENGTH_LONG).show();
-                    dataStorage.saveData(emailText.getText().toString(), passwdText.getText().toString());
-                    finish();
-                    startActivity(mainScreen);
-                } else {
-                    if (!emailIsValid)
-                        emailText.setError(getString(R.string.emailError));
-                    if (!passwdIsValid)
-                        passwdText.setError(getString(R.string.passwdError));
-                }
+                validate();
             }
         });
     }
 
     public void onBackPressed() {
         moveTaskToBack(true);
+    }
+
+    private void validate() {
+        boolean emailIsValid = Validation.validateEmail(emailText.getText().toString());
+        boolean passwdIsValid = Validation.validatePassword(passwdText.getText().toString());
+        if (emailIsValid && passwdIsValid) {
+            Toast.makeText(getBaseContext(), getString(R.string.log_in_message), Toast.LENGTH_LONG).show();
+            dataStorage.saveData(emailText.getText().toString(), passwdText.getText().toString());
+            finish();
+            startActivity(mainScreen);
+        } else {
+            if (!emailIsValid)
+                emailText.setError(getString(R.string.emailError));
+            if (!passwdIsValid)
+                passwdText.setError(getString(R.string.passwdError));
+        }
     }
 }

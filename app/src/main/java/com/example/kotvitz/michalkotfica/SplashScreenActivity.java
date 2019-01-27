@@ -10,15 +10,28 @@ import android.support.v7.app.AppCompatActivity;
 public class SplashScreenActivity extends AppCompatActivity {
 
     private final Handler handler = new Handler();
+    private LoginDataStorage dataStorage;
+    private Intent loginScreen;
+    private Intent mainScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
-        final Intent loginScreen = new Intent(this, LoginActivity.class);
-        final Intent mainScreen = new Intent(this, MainActivity.class);
-        final SharedPreferences preferences = getSharedPreferences("loginData", Activity.MODE_PRIVATE);
-        final LoginDataStorage dataStorage = new LoginDataStorage(preferences);
+        loginScreen = new Intent(this, LoginActivity.class);
+        mainScreen = new Intent(this, MainActivity.class);
+        SharedPreferences preferences = getSharedPreferences(AppConstant.LOGIN_PREFS, Activity.MODE_PRIVATE);
+        dataStorage = new LoginDataStorage(preferences);
+        goToAnotherActivityAfterDuration();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Remove a delayed messages with code 0
+        handler.removeMessages(0);
+    }
+
+    private void goToAnotherActivityAfterDuration() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -30,12 +43,6 @@ public class SplashScreenActivity extends AppCompatActivity {
                     startActivity(loginScreen);
                 }
             }
-        }, 5000);
-    }
-
-    @Override
-    public void onBackPressed() {
-        //Remove a delayed messages with code 0
-        handler.removeMessages(0);
+        }, AppConstant.SPLASH_SCREEN_DURATION);
     }
 }
